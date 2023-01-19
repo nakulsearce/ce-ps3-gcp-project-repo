@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    meta.helm.sh/release-name: master-service-car
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2022-08-22T11:47:06Z"
+  generation: 4
+  labels:
+    app: service-car
+    app.kubernetes.io/instance: master-service-car
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: service-car
+    app.kubernetes.io/version: 1.16.0
+    helm.sh/chart: travelshift-template-0.1.0
+    version: master
+  name: master-service-car
+  namespace: default
+  resourceVersion: "516759133"
+  uid: fca8a8bc-c4da-438c-8bfa-15ccbe7bf768
+spec:
+  gateways:
+  - istio-gateway/wildcard-staging-gcptravelshift
+  hosts:
+  - master-service-car.staging.gcptravelshift.com
+  - external-master-service-car.staging.gcptravelshift.com
+  - master-service-car.default.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: master-service-car.default.svc.cluster.local
+        subset: master
